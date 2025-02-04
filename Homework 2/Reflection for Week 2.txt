@@ -1,0 +1,7 @@
+This was exceedlingly difficult and I was completely unable to do almost anything I wanted to do. The best I could do is make a jittery table and draw a line from a single point.
+The major hangup I personally had was that I was studying my assignments from last semester for any clues how to move things or create arrays. Some basic information (like studying what parameters go where for certain shapes) was referenced from the p5 Website as well.
+But I couldn't figure out what arrays would be useful to me, and movement from those only involved shapes with only 3 parameters, X, Y. and size/radius.
+I typically used four parameters and a lot of them at that.
+
+Meanwhile ChatGPT followed all instructions to a T, to the detriment of the fat cap and the meat part just jittering around randomly for no discernable reason or sense of design. My version's mouseclick is meant to be somewhat
+reminiscent of a cut. Whereas the moving table was meant to look like it was shaking, and yet for some reason it only jitters left to right.
