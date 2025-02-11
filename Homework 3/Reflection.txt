@@ -1,0 +1,8 @@
+This project was definitely very confusing at first, having to use external resources and plugins for anything to display.
+Nonetheless, it was a good way to demonstrate the streamlined workflow of having assets orginized into their own neat packages.
+Each of the three images I added on top of the prior p5 project. Two of the images I pulled from image searches, then I used ChatGPT for the one on the right. That being said, I accidentally shrank it down too much and had to bring it back to a reasonable size,
+hence it got compressed. But ChatGPT has fairly accurate artwork for a ribeye I must say. A couple years ago if the Will Smith Spaghetti video is anything to go by, the Ribeye would be merely a meat shaped blob. I find ChatGPT's image generation
+more widely known and so I stuck with it for the assignment.
+
+I had to use all kinds of resources, such as the examples from the external website and the sample piece for the class. As I am still learning the how and why of code, given the need for each line to be specific down to even
+the spelling, syntax, and punctuation. In other words the references carried me for this assignment.
