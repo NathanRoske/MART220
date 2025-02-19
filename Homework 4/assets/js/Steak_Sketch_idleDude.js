@@ -83,26 +83,11 @@ function setup()
 
     setInterval(timer, 1000);
 
-    MyAnimation = new animationImages("images/png/Idle (1).png", 100, 250, 150, 150);
-    animations[0] = MyAnimation;
-    MyAnimation = new animationImages("images/png/Idle (2).png", 100, 250, 150, 150);
-    animations[1] = MyAnimation;
-    MyAnimation = new animationImages("images/png/Idle (3).png", 100, 250, 150, 150);
-    animations[2] = MyAnimation;
-    MyAnimation = new animationImages("images/png/Idle (4).png", 100, 250, 150, 150);
-    animations[4] = MyAnimation;
-    MyAnimation = new animationImages("images/png/Idle (5).png", 100, 250, 150, 150);
-    animations[5] = MyAnimation;
-    MyAnimation = new animationImages("images/png/Idle (6).png", 100, 250, 150, 150);
-    animations[6] = MyAnimation;
-    MyAnimation = new animationImages("images/png/Idle (7).png", 100, 250, 150, 150);
-    animations[7] = MyAnimation;
-    MyAnimation = new animationImages("images/png/Idle (8).png", 100, 250, 150, 150);
-    animations[8] = MyAnimation;
-    MyAnimation = new animationImages("images/png/Idle (9).png", 100, 250, 150, 150);
-    animations[9] = MyAnimation;
-    MyAnimation = new animationImages("images/png/Idle (10).png", 100, 250, 150, 150);
-    animations[10] = MyAnimation;
+    for(var i = 0; i < 10; i++)
+    {
+    MyAnimation = new animationImages("images/png/Idle (" + (i+1) + ").png", 100, 250, 150, 150);
+    animations[i] = MyAnimation;
+    }
 
     setInterval(incrementIdleIndex, 100);
 }
@@ -177,10 +162,8 @@ function draw()
     textSize(20)
     text('Sliding Table Makes the Cut', 300, 20);
     text('Nate Roske', 490, 690);
-
-        for(var i = 0; i < animations.length; i++)
-        animations[i].drawAnimations();
         
+    animations[i].drawAnimations();
 }
 
 
