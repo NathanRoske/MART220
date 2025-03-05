@@ -63,6 +63,14 @@ class animationImages
         {
             this.x -= 1;
         }
+        else if(direction == "up")
+        {
+            this.y -= 1;
+        }
+        else if(direction == "down")
+        {
+            this.y += 1;
+        }
     }
     setCurrentFrameCount(currentFramecount)
     {

@@ -153,9 +153,9 @@ function draw()
     
     DrawSteak();
 
-    fill(50)
+    /*fill(50)
     line(mouseShapeX,mouseShapeY,250,450);
-
+*/
     image(steak_1, steak_1X, steak_1Y);
     steak_1Y += steak_1Speed;
     if(steak_1Y >= width - steak_1.width || steak_1Y <= steak_1.width/2)
@@ -185,53 +185,52 @@ function draw()
     for (let i = 0; i < SteakbiteArray.length; i++){
         SteakbiteArray[i].draw();
     }
-
-    MyAnimation.drawAnimations(i);
-
     
 
-    if (keyIsPressed) {
-        if (key == "a") {
-            MywalkAnimation.setCurrentFrameCount(frameCount);
-            MywalkAnimation.drawAnimations();
-            MywalkAnimation.updatePosition('reverse');
-            MyAnimation.updatePosition('reverse');
-            
-        }
-        else if (key == "d") {
-            MywalkAnimation.setCurrentFrameCount(frameCount);
-            MywalkAnimation.drawAnimations();
-            MywalkAnimation.updatePosition('forward');
-            MyAnimation.updatePosition('forward');
-            
+        if (keyIsPressed) {
+            if (key == "a") {
+                MywalkAnimation.setCurrentFrameCount(frameCount);
+                MywalkAnimation.drawAnimations();
+                MywalkAnimation.updatePosition('reverse');
+                MyAnimation.updatePosition('reverse');
+                
+            }
+            else if (key == "d") {
+                MywalkAnimation.setCurrentFrameCount(frameCount);
+                MywalkAnimation.drawAnimations();
+                MywalkAnimation.updatePosition('forward');
+                MyAnimation.updatePosition('forward');
+                
+            }
+            else if (key == "w") {
+                MywalkAnimation.setCurrentFrameCount(frameCount);
+                MywalkAnimation.drawAnimations();
+                MywalkAnimation.updatePosition('up');
+                MyAnimation.updatePosition('up');
+            }
+            else if (key == "s") {
+                MywalkAnimation.setCurrentFrameCount(frameCount);
+                MywalkAnimation.drawAnimations();
+                MywalkAnimation.updatePosition('down');
+                MyAnimation.updatePosition('down');
+            }
+            else
+            {
+                MyAnimation.updatePosition('idle');
+                MyAnimation.setCurrentFrameCount(frameCount);
+                MyAnimation.drawAnimations();
+            }
         }
         else
         {
-            MyAnimation.updatePosition('idle');
             MyAnimation.setCurrentFrameCount(frameCount);
             MyAnimation.drawAnimations();
         }
-    }
-    else
-    {
-        MyAnimation.setCurrentFrameCount(frameCount);
-        MyAnimation.drawAnimations();
-    }
-
-
-        //if (key == "w") {
-            
-            
-        //}
-        //if (key == "s") {
-            
-           
-       /* }
-        for (let k = 0; k < SteakbiteArray.length; k++) {
-            if (animations[i].hasCollided(SteakbiteArray[k].x, SteakbiteArray[k].y, 25, 25)) {
+        /*for (let k = 0; k < SteakbiteArray.length; k++) {
+            if (walkAnimation[i].hasCollided(SteakbiteArray[k].x, SteakbiteArray[k].y, 25, 25)) {
             SteakbiteArray.splice(k, 1);
             }
-        } */
+        }*/ 
     }
     
 
@@ -283,11 +282,11 @@ function steakPart3(){
 function steakPart4(){
     ellipse(steakPart4EllipseX1, steakPart4EllipseY1, steakPart4EllipseX2,steakPart4EllipseY2);
 }
-function mouseClicked()
+/*function mouseClicked()
 {
     mouseShapeX = mouseX;
     mouseShapeY = mouseY;
-}
+}*/
 
 function timer() {
     if (timerValue > 0) {
