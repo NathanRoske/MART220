@@ -12,7 +12,10 @@ class animationImages
         this.imageObjects = [];
         this.loadAnimation();
         
+        
     }
+
+    
     loadAnimation()
     {
         for(var i = 0; i < this.fileName.length; i++)
@@ -42,7 +45,7 @@ class animationImages
         if(this.i >= this.fileName.length){
             this.i = 0;
         }
-    }
+    }    
     
     /*hasCollided(x2, y2, w2, h2) {
         return (
@@ -52,6 +55,7 @@ class animationImages
             this.y + this.h > y2
         );
     }*/
+
     updatePosition(direction)
     {
         this.direction = direction;
@@ -76,4 +80,5 @@ class animationImages
     {
         this.currentFramecount = currentFramecount;
     }
+    
 }

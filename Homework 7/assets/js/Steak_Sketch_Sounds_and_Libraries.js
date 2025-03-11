@@ -83,13 +83,16 @@ var x = 150;
 var y = 150;
 var w = 150;
 var h = 150;
+var r = 25;
 var idlePaths = [];
 var walkPaths = [];
 var walkAnimation = [];
 
+var mySound;
 
 function preload() {
     
+    mySound = loadSound('sounds/790811__collectionofmemories__celtic-loop-2.wav');
     idlePaths = loadStrings("images/png/idle.txt");
     walkPaths = loadStrings("images/png/walk.txt");
     
@@ -97,6 +100,8 @@ function preload() {
 
 function setup()
 {
+    mySound.play();
+
     steak_1 = loadImage('images/Steak-Transparent-Free-PNG.png');
     steak_2 = loadImage('images/OIP.jpg');
     ChatGPT_steak = loadImage('images/Chat GPT Steak.png');
@@ -104,13 +109,11 @@ function setup()
     createCanvas(600,700)
     TableXSpeed = Math.floor(Math.random() * (Math.floor(Math.random() * 5)) - 1);
     TableYSpeed = Math.floor(Math.random() * (Math.floor(Math.random() * 5)) - 1);
-
     
 
-    MyAnimation = new animationImages(idlePaths, 150, 150, 150, 150);
     animations[i] = MyAnimation;
-    MywalkAnimation = new animationImages(walkPaths, 150, 150, 150, 150);
     
+
     setInterval (timer, 1000)
 
     for (let i = 0; i < 20; i++){
@@ -177,6 +180,7 @@ function draw()
     
     DrawSteak();
 
+    
     /*fill(50)
     line(mouseShapeX,mouseShapeY,250,450);
 */
@@ -208,76 +212,75 @@ function draw()
     text('Sliding Table Makes the Cut', 300, 20);
     text('Nate Roske', 490, 690);
 
-    drawSteakbites();
+    fill(0);
+    textSize(24);
+    text("Score: " + score, 50, 50);
 
-    drawburntSteakbites();
-    
-    displayScore();
+    for (let i = 0; i < SteakbiteArray.length; i++){
+        SteakbiteArray[i].draw();
+        }
 
-    characterMovment();
-    
+    for (let i = 0; i < burntSteakbiteArray.length; i++){
+        burntSteakbiteArray[i].draw();
+        }
+
+        if (keyIsPressed) {
+            if (key == "a") {
+                MywalkAnimation.setCurrentFrameCount(frameCount);
+                MywalkAnimation.drawAnimations();
+                MywalkAnimation.updatePosition('reverse');
+                MyAnimation.updatePosition('reverse');
+                
+            }
+            else if (key == "d") {
+                MywalkAnimation.setCurrentFrameCount(frameCount);
+                MywalkAnimation.drawAnimations();
+                MywalkAnimation.updatePosition('forward');
+                MyAnimation.updatePosition('forward');
+                
+            }
+            else if (key == "w") {
+                MywalkAnimation.setCurrentFrameCount(frameCount);
+                MywalkAnimation.drawAnimations();
+                MywalkAnimation.updatePosition('up');
+                MyAnimation.updatePosition('up');
+            }
+            else if (key == "s") {
+                MywalkAnimation.setCurrentFrameCount(frameCount);
+                MywalkAnimation.drawAnimations();
+                MywalkAnimation.updatePosition('down');
+                MyAnimation.updatePosition('down');
+            }
+            else
+            {
+                MyAnimation.updatePosition('idle');
+                MyAnimation.setCurrentFrameCount(frameCount);
+                MyAnimation.drawAnimations();
+            }
+            }
+            else
+            {
+                MyAnimation.setCurrentFrameCount(frameCount);
+                MyAnimation.drawAnimations();
+            }
+            for (let k = 0; k < SteakbiteArray.length; k++){
+                if (collideRectRect(animations[i].x, animations[i].y,animations[i].w,animations[i].h, SteakbiteArray[k].x, SteakbiteArray[k].y, 25, 25)) 
+                    {
+                    SteakbiteArray.splice(k, 1);
+                    score++;
+                    //good sound to be added later
+                    }
+            }
+            for (let l = 0; l < burntSteakbiteArray.length; l++) {
+                if (collideRectRect(animations[i].x, animations[i].y,animations[i].w,animations[i].h, burntSteakbiteArray[l].x, burntSteakbiteArray[l].y, 25, 25))
+                    {
+                    burntSteakbiteArray.splice(l, 1);
+                    score--;
+                    //bad sound to be added later                
+                    }
+            } 
     
 }
-    
-
-    
-
-function characterMovment(){
-    if (keyIsPressed) {
-        if (key == "a") {
-            MywalkAnimation.setCurrentFrameCount(frameCount);
-            MywalkAnimation.drawAnimations();
-            MywalkAnimation.updatePosition('reverse');
-            MyAnimation.updatePosition('reverse');
-            
-        }
-        else if (key == "d") {
-            MywalkAnimation.setCurrentFrameCount(frameCount);
-            MywalkAnimation.drawAnimations();
-            MywalkAnimation.updatePosition('forward');
-            MyAnimation.updatePosition('forward');
-            
-        }
-        else if (key == "w") {
-            MywalkAnimation.setCurrentFrameCount(frameCount);
-            MywalkAnimation.drawAnimations();
-            MywalkAnimation.updatePosition('up');
-            MyAnimation.updatePosition('up');
-        }
-        else if (key == "s") {
-            MywalkAnimation.setCurrentFrameCount(frameCount);
-            MywalkAnimation.drawAnimations();
-            MywalkAnimation.updatePosition('down');
-            MyAnimation.updatePosition('down');
-        }
-        else
-        {
-            MyAnimation.updatePosition('idle');
-            MyAnimation.setCurrentFrameCount(frameCount);
-            MyAnimation.drawAnimations();
-        }
-    }
-    else
-    {
-        MyAnimation.setCurrentFrameCount(frameCount);
-        MyAnimation.drawAnimations();
-    }
-    for (let k = 0; k < SteakbiteArray.length; k++){
-        if (collideRectRect(animations[i].x, animations[i].y,animations[i].w,animations[i].h, SteakbiteArray.x, SteakbiteArray.y, 25, 25)) 
-            {
-            SteakbiteArray.splice(k, 1);
-            score++;
-            }
-    }
-    for (let l = 0; l < burntSteakbiteArray.length; l++) {
-        if (collideRectRect(animations[i].x, animations[i].y,animations[i].w,animations[i].h, burntSteakbiteArray.x, burntSteakbiteArray.y, 25, 25))
-            {
-            burntSteakbiteArray.splice(l, 1);
-            score--;                
-            }
-    } 
-}
-
 
 function DrawSteak(){        
         fill(139,0,0)
@@ -343,12 +346,7 @@ function updateIndex() {
         i = 0;
     }
 }
-function displayScore()
-{
-    fill(0);
-    textSize(24);
-    text("Score: " + score, 50, 50);
-}
+
 function moveSteakbites(){
     for (let i = 0; i < SteakbiteArray.length; i++)
         SteakbiteArray[i].x = random(100, width - 100);
@@ -361,13 +359,6 @@ function moveburntSteakbites(){
         burntSteakbiteArray[i].y = random(100, height - 100);
 }
 
-function drawSteakbites(){
-    for (let i = 0; i < SteakbiteArray.length; i++){
-    SteakbiteArray[i].draw();
-    }
-}
-function drawburntSteakbites(){
-    for (let i = 0; i < burntSteakbiteArray.length; i++){
-    burntSteakbiteArray[i].draw();
-    }
-}
+
+
+
