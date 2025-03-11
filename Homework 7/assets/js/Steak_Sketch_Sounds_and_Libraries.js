@@ -89,10 +89,17 @@ var walkPaths = [];
 var walkAnimation = [];
 
 var mySound;
+var munchSound;
+var bonkSound;
 
 function preload() {
     
+    soundFormats("mp3");
+
     mySound = loadSound('sounds/790811__collectionofmemories__celtic-loop-2.wav');
+    munchSound = loadSound("sounds/64324__sir-smith__popcorn_bite.wav");
+    bonkSound = loadSound("sounds/466202__harrisando__bonk.wav")
+
     idlePaths = loadStrings("images/png/idle.txt");
     walkPaths = loadStrings("images/png/walk.txt");
     
@@ -111,7 +118,9 @@ function setup()
     TableYSpeed = Math.floor(Math.random() * (Math.floor(Math.random() * 5)) - 1);
     
 
+    MyAnimation = new animationImages(idlePaths, 150, 150, 150, 150);
     animations[i] = MyAnimation;
+    MywalkAnimation = new animationImages(walkPaths, 150, 150, 150, 150);
     
 
     setInterval (timer, 1000)
@@ -180,7 +189,6 @@ function draw()
     
     DrawSteak();
 
-    
     /*fill(50)
     line(mouseShapeX,mouseShapeY,250,450);
 */
@@ -263,11 +271,14 @@ function draw()
                 MyAnimation.setCurrentFrameCount(frameCount);
                 MyAnimation.drawAnimations();
             }
+    
+
             for (let k = 0; k < SteakbiteArray.length; k++){
                 if (collideRectRect(animations[i].x, animations[i].y,animations[i].w,animations[i].h, SteakbiteArray[k].x, SteakbiteArray[k].y, 25, 25)) 
                     {
                     SteakbiteArray.splice(k, 1);
                     score++;
+                    munchSound.play();
                     //good sound to be added later
                     }
             }
@@ -276,6 +287,7 @@ function draw()
                     {
                     burntSteakbiteArray.splice(l, 1);
                     score--;
+                    bonkSound.play();
                     //bad sound to be added later                
                     }
             } 
@@ -358,7 +370,4 @@ function moveburntSteakbites(){
         burntSteakbiteArray[i].x = random(100, width - 100);
         burntSteakbiteArray[i].y = random(100, height - 100);
 }
-
-
-
 
