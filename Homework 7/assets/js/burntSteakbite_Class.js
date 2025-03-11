@@ -1,4 +1,4 @@
-class Steakbites
+class burntSteakbites
 {
     constructor(x,y)
     {
@@ -9,7 +9,7 @@ class Steakbites
 
     draw()
     {
-        fill(100,0,0);
+        fill(0,0,0);
         circle(this.x, this.y, this.r);
     }
 }
