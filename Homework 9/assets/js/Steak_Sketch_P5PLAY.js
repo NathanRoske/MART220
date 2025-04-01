@@ -91,9 +91,19 @@ var Barrier;
 var Barrier2;
 var Barrier3;
 
-var SteakHealth = 100;
-var burntSteakHealth = 100;
+var ToddHoward;
+var ToddHoward2;
+var ToddHoward3;
+var ToddHoward4;
+var ToddHoward5;
 
+var ToddHowardHealth = 100;
+var ToddHowardHealth2 = 100;
+var ToddHowardHealth3 = 100;
+var ToddHowardHealth4 = 100;
+var ToddHowardHealth5 = 100;
+
+var ToddHowardHealthPool = 5;
 
 const particles = [];
 
@@ -156,6 +166,31 @@ function setup()
     Barrier3.img = "images/green-circle-icon-28.png"
     Barrier3.scale = 0.15;
     Barrier3.diameter = 100;
+
+    ToddHoward = createSprite(random(100, 600), random(100, 600), 50, 50, 'static');
+    ToddHoward.img = "images/Todd Coward.png"
+    ToddHoward.scale = 0.10;
+    ToddHoward.diameter = 100;
+
+    ToddHoward2 = createSprite(random(100, 600), random(100, 600), 50, 50, 'static');
+    ToddHoward2.img = "images/Todd Coward.png"
+    ToddHoward2.scale = 0.10;
+    ToddHoward2.diameter = 100;
+
+    ToddHoward3 = createSprite(random(100, 600), random(100, 600), 50, 50, 'static');
+    ToddHoward3.img = "images/Todd Coward.png"
+    ToddHoward3.scale = 0.10;
+    ToddHoward3.diameter = 100;
+
+    ToddHoward4 = createSprite(random(100, 600), random(100, 600), 50, 50, 'static');
+    ToddHoward4.img = "images/Todd Coward.png"
+    ToddHoward4.scale = 0.10;
+    ToddHoward4.diameter = 100;
+
+    ToddHoward5 = createSprite(random(100, 600), random(100, 600), 50, 50, 'static');
+    ToddHoward5.img = "images/Todd Coward.png"
+    ToddHoward5.scale = 0.10;
+    ToddHoward5.diameter = 100;
 }
 
 function draw()
@@ -196,6 +231,8 @@ function draw()
     healthbar()
       
     gamewin()
+
+    ToddHowardWin()
 }
 
 function DrawSteak(){        
@@ -384,45 +421,100 @@ function playerMovement() {
         MyAnimation.drawAnimations('walk');
         MyAnimation.updatePosition('down');
     }
-    else if (kb.presses("x")) {
+    else if (kb.pressing("x")) {
         MyAnimation.drawAnimations('attack');
-        for (let k = 0; k < SteakbiteArray.length; k++){
-        //if (SteakbiteArray[k].SteakbitePiece != null) 
-            if (dist(MyAnimation.getCurrentAnimation().position.x, MyAnimation.getCurrentAnimation().position.y, SteakbiteArray[k].SteakbitePiece.position.x, SteakbiteArray[k].SteakbitePiece.position.y) < 100) {
-                createParticles(SteakbiteArray[k].SteakbitePiece.position.x, SteakbiteArray[k].SteakbitePiece.position.y);
-                SteakHealth -= 1;
-                if(SteakHealth <= 0)
+        if (ToddHoward != null) {
+            if (dist(MyAnimation.getCurrentAnimation().position.x, MyAnimation.getCurrentAnimation().position.y, ToddHoward.position.x, ToddHoward.position.y) < 200) {
+                createParticles(ToddHoward.position.x, ToddHoward.position.y);
+                ToddHowardHealth -= 1;
+                if(ToddHowardHealth <= 0)
                     {
-                        SteakbiteArray[k].SteakbitePiece.remove()
+                        ToddHoward.remove()
+                        ToddHowardHealthPool--;
                         score++;
                         munchSound.play();
-                        //SteakbiteArray[k].SteakbitePiece = null;
+                        ToddHoward = null;
                     }
                 }    
+        }
+
+        if (ToddHoward2 != null) {
+            if (dist(MyAnimation.getCurrentAnimation().position.x, MyAnimation.getCurrentAnimation().position.y, ToddHoward2.position.x, ToddHoward2.position.y) < 200) {
+                createParticles(ToddHoward2.position.x, ToddHoward2.position.y);
+                ToddHowardHealth2 -= 1;
+                if(ToddHowardHealth2 <= 0)
+                    {
+                        ToddHoward2.remove()
+                        ToddHowardHealthPool--;
+                        score++;
+                        munchSound.play();
+                        ToddHoward2 = null;
+                    }
+                }    
+        }
+        if (ToddHoward3 != null) {
+            if (dist(MyAnimation.getCurrentAnimation().position.x, MyAnimation.getCurrentAnimation().position.y, ToddHoward3.position.x, ToddHoward3.position.y) < 200) {
+                createParticles(ToddHoward3.position.x, ToddHoward3.position.y);
+                ToddHowardHealth3 -= 1;
+                if(ToddHowardHealth3 <= 0)
+                    {
+                        ToddHoward3.remove()
+                        ToddHowardHealthPool--;
+                        score++;
+                        munchSound.play();
+                        ToddHoward3 = null;
+                    }
+                }    
+        }
+        if (ToddHoward4 != null) {
+            if (dist(MyAnimation.getCurrentAnimation().position.x, MyAnimation.getCurrentAnimation().position.y, ToddHoward4.position.x, ToddHoward4.position.y) < 200) {
+                createParticles(ToddHoward4.position.x, ToddHoward4.position.y);
+                ToddHowardHealth4 -= 1;
+                if(ToddHowardHealth4 <= 0)
+                    {
+                        ToddHoward4.remove()
+                        ToddHowardHealthPool--;
+                        score++;
+                        munchSound.play();
+                        ToddHoward4 = null;
+                    }
+                }    
+        }
+        if (ToddHoward5 != null) {
+            if (dist(MyAnimation.getCurrentAnimation().position.x, MyAnimation.getCurrentAnimation().position.y, ToddHoward5.position.x, ToddHoward5.position.y) < 200) {
+                createParticles(ToddHoward5.position.x, ToddHoward5.position.y);
+                ToddHowardHealth5 -= 1;
+                if(ToddHowardHealth5 <= 0)
+                    {
+                        ToddHoward5.remove()
+                        ToddHowardHealthPool--;
+                        score++;
+                        munchSound.play();
+                        ToddHoward5 = null;
+                    }
+                }    
+        }
+        
             
-        }
-        for (let l = 0; l < burntSteakbiteArray.length; l++){
-            //if (burntSteakbiteArray[l].burntSteakbitePiece != null) 
-                if (dist(MyAnimation.getCurrentAnimation().position.x, MyAnimation.getCurrentAnimation().position.y, burntSteakbiteArray[l].burntSteakbitePiece.position.x, burntSteakbiteArray[l].burntSteakbitePiece.position.y) < 100) {
-                    createParticles(burntSteakbiteArray[l].burntSteakbitePiece.position.x, burntSteakbiteArray[l].burntSteakbitePiece.position.y);
-                    burntSteakHealth -= 1;
-                    if(burntSteakHealth <= 0)
-                        {
-                            burntSteakbiteArray[l].burntSteakbitePiece.remove()
-                            score++;
-                            munchSound.play();
-                            //burntSteakbiteArray[l].burntSteakbitePiece = null;
-                        }
-                    }    
-                }
-        }
-        else
+    }    
+        
+        
+    else
         {
         MyAnimation.drawAnimations('idle');
         }
-}
+    }
+
 function AllSteakbiteCollision() 
     {
+    for (let k = 0; k < SteakbiteArray.length; k++){
+        if (MyAnimation.isColliding(SteakbiteArray[k].SteakbitePiece)) 
+            {
+            SteakbiteArray[k].SteakbitePiece.remove();
+            score++;
+            munchSound.play();
+            }
+        }
     for (let l = 0; l < burntSteakbiteArray.length; l++) {
         if (MyAnimation.isColliding(burntSteakbiteArray[l].burntSteakbitePiece))
             {
@@ -435,17 +527,25 @@ function AllSteakbiteCollision()
         }
     }
 
+function ToddHowardWin() {
+if (ToddHowardHealthPool <= 0)
+    {
+    fill(255, 223, 0)
+    textSize(30)
+    text("You Beat Todd Howard and His Legion of Clones!", 50, 600);
+    }
+}
 function createParticles(x,y) 
 {
-    for (let i = 0; i < 5; i++) {
-        let p = new Particle(x,y);
-        particles.push(p);
-    }
+for (let i = 0; i < 5; i++) {
+    let p = new Particle(x,y);
+    particles.push(p);
 }
 for (let i = particles.length - 1; i >= 0; i--) {
     particles[i].update();
     particles[i].show();
     if (particles[i].finished()) {
         particles.splice(i,1);
+    }
     }
 }
