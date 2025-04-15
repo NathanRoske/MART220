@@ -1,0 +1,33 @@
+class modelClass
+{
+    constructor(x,y,speed, cube, cylinder, ellipsoid, torus, cone, img, img2, img3)
+    {
+        this.x = x;
+        this.y = y;
+        this.speed = speed;
+        this.cube = cube;
+        this.cylinder = cylinder;
+        this.ellipsoid = ellipsoid;
+        this.torus = torus;
+        this.cone = cone;
+        this.img = img;
+        this.img2 = img2;
+        this.img3 = img3;
+    }
+    updateSpeed(speed)
+    {
+        this.speed = speed;
+    }
+
+    updateX(x)
+    {
+        this.x = x;
+    }
+
+    updateY(y)
+    {
+        this.y =y;
+    }
+
+    draw()
+}
